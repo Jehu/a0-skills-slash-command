@@ -1,0 +1,68 @@
+<html>
+<head>
+  <title>Skill Slash Commands</title>
+</head>
+<body>
+  <div x-data="{
+    initDefaults() {
+      if (config.include_pinned_skills === undefined || config.include_pinned_skills === null) config.include_pinned_skills = true;
+      if (config.include_chat_skills === undefined || config.include_chat_skills === null) config.include_chat_skills = true;
+      if (config.include_visible_skills === undefined || config.include_visible_skills === null) config.include_visible_skills = true;
+    }
+  }">
+    <template x-if="config">
+      <div x-init="initDefaults()">
+        <div class="section-title">Skill Slash Commands</div>
+        <div class="section-description">
+          Choose which skills should be exposed as direct slash commands. All options are enabled by default.
+        </div>
+
+        <div class="field">
+          <div class="field-label">
+            <div class="field-title">Pinned/default skills</div>
+            <div class="field-description">
+              Expose skills pinned in the current project/agent scope as commands.
+            </div>
+          </div>
+          <div class="field-control">
+            <label class="toggle">
+              <input type="checkbox" x-model="config.include_pinned_skills" />
+              <span class="toggler"></span>
+            </label>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="field-label">
+            <div class="field-title">Chat/session skills</div>
+            <div class="field-description">
+              Expose skills explicitly activated in the current chat/session.
+            </div>
+          </div>
+          <div class="field-control">
+            <label class="toggle">
+              <input type="checkbox" x-model="config.include_chat_skills" />
+              <span class="toggler"></span>
+            </label>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="field-label">
+            <div class="field-title">Visible/loaded active skills</div>
+            <div class="field-description">
+              Expose skills currently visible or loaded in the chat context, including effective active skills reported by Agent Zero.
+            </div>
+          </div>
+          <div class="field-control">
+            <label class="toggle">
+              <input type="checkbox" x-model="config.include_visible_skills" />
+              <span class="toggler"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </template>
+  </div>
+</body>
+</html>
